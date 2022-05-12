@@ -40,7 +40,7 @@
 	</div>
 
 	<div class="container" id="methodHeader">
-		<h1 class="display-4">Edit DVD: A Great Tale</h1>
+		<h1 class="display-4" id="headerTitle">Edit DVD: A Great Tale</h1>
 	</div>
 
 	<div class="container">
@@ -92,7 +92,7 @@
 				<label for="titleInput" class="col-sm-3  col-form-label col-form-label-sm">DVD Title:</label>
 
 				<div class="col-sm-6">
-					<input type="text" id="titleInput" class="form-control form-control-sm">
+					<input type="text" id="titleInput" placeholder="Enter Title" class="form-control">
 				</div>
 			</div>
 			<div class="form-group row">
@@ -111,7 +111,7 @@
 				<label for="rating" class="col-sm-3 col-form-label col-form-label-sm">Rating:</label>
 				<div class="col-sm-6">
 					<select name="rating" id="rating" class="form-control">
-						<option value="" disabled selected>Choose Rating</option>
+						<option value="G" selected>G</option>
 						<option value="PG">PG</option>
 						<option value="PG-13">PG-13</option>
 						<option value="R">R</option>
@@ -126,6 +126,7 @@
 				</div>
 			</div>
 		</form>
+		<button class="btn btn-primary" id="formBackBtn">Back</button>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"

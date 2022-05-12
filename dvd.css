@@ -2,5 +2,8 @@
 	margin-top:50px;
 }
 
+#formcontainer, #tableContainer, #methodHeader {
+	display: none;
+}
 
 
