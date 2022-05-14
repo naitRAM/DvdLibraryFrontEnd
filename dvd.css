@@ -1,8 +1,8 @@
-.container {
-	margin-top:50px;
+.container, .margin-top {
+	margin-top: 50px;
 }
 
-#formcontainer, #tableContainer, #methodHeader {
+#formcontainer, #tableContainer, #methodHeader, #detailsContainer, .hidden {
 	display: none;
 }
 

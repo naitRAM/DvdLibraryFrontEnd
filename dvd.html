@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<meta charset="utf-8">
+	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
 		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -59,38 +59,17 @@
 				</tr>
 			</thead>
 			<tbody>
-				<!--
-				<tr>
-					<td>A Great Tale</td>
-					<td>2015</td>
-					<td>Jones</td>
-					<td>PG</td>
-					<td><a href="">Edit</a> | <a href="">Delete</a></td>
-				</tr>
-				<tr>
-					<td>A Good Tale</td>
-					<td>2012</td>
-					<td>Smith</td>
-					<td>PG-13</td>
-					<td><a href="">Edit</a> | <a href="">Delete</a></td>
-				</tr>
-				<tr>
-					<td>An OK Tale</td>
-					<td>2009</td>
-					<td>Bryan</td>
-					<td>G</td>
-					<td><a href="">Edit</a> | <a href="">Delete</a></td>
-				</tr>
-				-->
 			</tbody>
 		</table>
 	</div>
 
 	<div class="container" id="formContainer">
 		<form>
+			<div class="hidden">
+				<input type="hidden" id="id">
+			</div>
 			<div class="form-group row">
 				<label for="titleInput" class="col-sm-3  col-form-label col-form-label-sm">DVD Title:</label>
-
 				<div class="col-sm-6">
 					<input type="text" id="titleInput" placeholder="Enter Title" class="form-control">
 				</div>
@@ -126,16 +105,65 @@
 				</div>
 			</div>
 		</form>
-		<button class="btn btn-primary" id="formBackBtn">Back</button>
+		<div class="row margin-top">
+			<div class="col-sm-3">
+				<button class="btn btn-primary" id="formBackBtn">Back</button>
+			</div>
+			<div class="col-sm-3">
+				<button class="btn btn-primary" id="formSubmit">Submit</button>
+			</div>
+		</div>
 	</div>
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+	<div class="container" id="detailsContainer">
+		<div class="row margin-top">
+			<div class="col-sm-6">
+				<h1 class="h5">
+					Release Year:
+				</h1>
+			</div>
+			<div class="col-sm-6" ><h1 id="detailsReleaseYear" class="h5"></h1></div>
+		</div>
+		<div class="row margin-top">
+			<div class="col-sm-6">
+				<h1 class="h5">
+					Director:
+				</h1>
+			</div>
+			<div class="col-sm-6"><h1  id="detailsDirector" class="h5"></h1></div>
+		</div>
+		<div class="row margin-top">
+			<div class="col-sm-6">
+				<h1 class="h5">
+					Rating:
+				</h1>
+			</div>
+			<div class="col-sm-6" ><h1 id="detailsRating" class="h5"></h1></div>
+		</div>
+		<div class="row margin-top">
+			<div class="col-sm-6">
+				<h1 class="h5">
+					Notes:
+				</h1>
+			</div>
+			<div class="col-sm-6" ><h1 id="detailsNotes" class="h5"></h1></div>
+		</div>
+		<div class="row margin-top">
+			<div class="col-sm-6">
+				<button class="btn btn-primary" id="detailsBackBtn">Back</button>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
 		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
 		crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
 		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 		crossorigin="anonymous"></script>
-		<script src="dvd.js"></script>
+	<script src="dvd.js"></script>
 </body>
 
 </html>
