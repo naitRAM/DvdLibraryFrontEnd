@@ -10,22 +10,23 @@ $(document).ready(function () {
                 $('#methodHeader').hide();
                 $('#formContainer').hide();
                 $('#detailsContainer').hide();
-                for (var i=0; i < dvds.length; i++) {
+                for (var i = 0; i < dvds.length; i++) {
                     var dvd = dvds[i];
                     var tableRow = '<tr><td class="hidden id">' + dvd.id + '</td><td class="title"><a href="">' + dvd.title
-                    + '</a></td><td class="releaseYear">' + dvd.releaseYear + '</td><td class="director">'
-                    + dvd.director + '</td>' + '<td class="rating">' + dvd.rating 
-                    + '</td><td> <a class="editLink" href="">Edit</a> | ' + 
-                    '<a class="deleteLink" href="">Delete</a></td></tr>';
+                        + '</a></td><td class="releaseYear">' + dvd.releaseYear + '</td><td class="director">'
+                        + dvd.director + '</td>' + '<td class="rating">' + dvd.rating
+                        + '</td><td> <a class="editLink" href="">Edit</a> | ' +
+                        '<a class="deleteLink" href="" data-toggle="modal" data-target="#deleteModal">Delete</a></td></tr>';
                     var tableBody = $("#tableContainer tbody").append(tableRow);
                     var titleAnchor = tableBody.find(':last-child .title a');
                     var editAnchor = tableBody.find(':last-child .editLink');
-                    titleAnchor.on('click', function(e) {
+                    var deleteAnchor = tableBody.find(':last-child .deleteLink');
+                    titleAnchor.on('click', function (e) {
                         e.preventDefault();
                         $.ajax({
                             type: 'GET',
                             url: 'http://dvd-library.us-east-1.elasticbeanstalk.com/dvd/' + $(this).closest('tr').find('.id').text(),
-                            success: function(dvd) {
+                            success: function (dvd) {
                                 var title = dvd.title;
                                 var releaseYear = dvd.releaseYear;
                                 var director = dvd.director;
@@ -35,12 +36,12 @@ $(document).ready(function () {
                             }
                         })
                     });
-                    editAnchor.on('click', function(e){
+                    editAnchor.on('click', function (e) {
                         e.preventDefault();
                         $.ajax({
-                        type: 'GET',
+                            type: 'GET',
                             url: 'http://dvd-library.us-east-1.elasticbeanstalk.com/dvd/' + $(this).closest('tr').find('.id').text(),
-                            success: function(dvd) {
+                            success: function (dvd) {
                                 var title = dvd.title;
                                 var releaseYear = dvd.releaseYear;
                                 var director = dvd.director;
@@ -50,6 +51,14 @@ $(document).ready(function () {
                                 showEditForm(id, title, releaseYear, director, rating, notes);
                             }
                         })
+                    });
+                    deleteAnchor.on('click', function (e) {
+                        e.preventDefault();
+                        var row = $(this).closest('tr');
+                        var id = row.find('.id').text();
+                        var title = row.find('.title a').text();
+                        $('#deleteId').text(id);
+                        $('#deleteModalBody').text('Are you sure you want to delete ' + title + '?');
                     });
                 }
             },
@@ -72,16 +81,16 @@ $(document).ready(function () {
                 notes: $('#notes').val()
             }),
             contentType: 'application/json',
-            success: function() {
+            success: function () {
                 getDvds();
             },
-            error: function() {
+            error: function () {
                 console.log("things fall apart");
             }
         });
     }
 
-    function createDvd(){
+    function createDvd() {
         $.ajax({
             type: 'POST',
             url: 'http://dvd-library.us-east-1.elasticbeanstalk.com/dvd/',
@@ -93,22 +102,22 @@ $(document).ready(function () {
                 notes: $('#notes').val()
             }),
             contentType: 'application/json',
-            success: function(){
+            success: function () {
                 getDvds();
             },
-            error: function(){
+            error: function () {
                 console.log("erratum");
             }
         });
     }
 
-    function clearFormValues (){
+    function clearFormValues() {
         $('#id').attr('value', '');
         $('#titleInput').val('');
         $('#releaseYear').val('');
         $('#directorInput').val('');
         $('#rating option').removeAttr('selected');
-        $('#rating option[value="G"]').attr('selected', true); 
+        $('#rating option[value="G"]').attr('selected', true);
         $('#notes').val('');
     }
 
@@ -129,10 +138,10 @@ $(document).ready(function () {
         $('#methodHeader').show();
         $('#tableContainer').hide();
         $('#detailsContainer').show();
-        
+
     }
 
-    function setFormValues(id, title, releaseYear, director, rating, notes){
+    function setFormValues(id, title, releaseYear, director, rating, notes) {
         $('#id').attr('value', id);
         $('#titleInput').val(title);
         $('#releaseYear').val(releaseYear);
@@ -142,7 +151,7 @@ $(document).ready(function () {
         $('#notes').val(notes);
     }
 
-    function showCreateForm () {
+    function showCreateForm() {
         $('#tableContainer').hide();
         $('#headerTitle').text('Create DVD');
         $('#methodHeader').show();
@@ -150,24 +159,36 @@ $(document).ready(function () {
         $('#formContainer').show();
     }
 
-    $('#createDVD').on('click', function(){
+    $('#createDVD').on('click', function () {
         showCreateForm();
     });
 
-    $('#formBackBtn').on('click', function() {
+    $('#formBackBtn').on('click', function () {
         getDvds();
     });
 
-    $('#detailsBackBtn').on('click', function() {
+    $('#detailsBackBtn').on('click', function () {
         getDvds();
     });
 
-    $('#formSubmit').on('click', function() {
+    $('#formSubmit').on('click', function () {
         if ($('#id').attr('value') == '') {
             createDvd();
         } else {
             editDvd();
         }
+    });
+
+    $('#deleteBtn').on('click', function () {
+        var id = $(this).find('#deleteId').text();
+        $.ajax({
+            type: 'DELETE',
+            url: 'http://dvd-library.us-east-1.elasticbeanstalk.com/dvd/' + id,
+            success: function () {
+                $('#deleteModal').modal('hide');
+                getDvds();
+            }
+        })
     });
 
     getDvds();

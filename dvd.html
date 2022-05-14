@@ -122,7 +122,9 @@
 					Release Year:
 				</h1>
 			</div>
-			<div class="col-sm-6" ><h1 id="detailsReleaseYear" class="h5"></h1></div>
+			<div class="col-sm-6">
+				<h1 id="detailsReleaseYear" class="h5"></h1>
+			</div>
 		</div>
 		<div class="row margin-top">
 			<div class="col-sm-6">
@@ -130,7 +132,9 @@
 					Director:
 				</h1>
 			</div>
-			<div class="col-sm-6"><h1  id="detailsDirector" class="h5"></h1></div>
+			<div class="col-sm-6">
+				<h1 id="detailsDirector" class="h5"></h1>
+			</div>
 		</div>
 		<div class="row margin-top">
 			<div class="col-sm-6">
@@ -138,7 +142,9 @@
 					Rating:
 				</h1>
 			</div>
-			<div class="col-sm-6" ><h1 id="detailsRating" class="h5"></h1></div>
+			<div class="col-sm-6">
+				<h1 id="detailsRating" class="h5"></h1>
+			</div>
 		</div>
 		<div class="row margin-top">
 			<div class="col-sm-6">
@@ -146,11 +152,34 @@
 					Notes:
 				</h1>
 			</div>
-			<div class="col-sm-6" ><h1 id="detailsNotes" class="h5"></h1></div>
+			<div class="col-sm-6">
+				<h1 id="detailsNotes" class="h5"></h1>
+			</div>
 		</div>
 		<div class="row margin-top">
 			<div class="col-sm-6">
 				<button class="btn btn-primary" id="detailsBackBtn">Back</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="deleteModalLabel">Confirm Delete</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body" id="deleteModalBody">
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary" id="deleteBtn"><span id="deleteId" class="hidden"></span>Save
+						changes</button>
+				</div>
 			</div>
 		</div>
 	</div>
