@@ -210,11 +210,15 @@ $(document).ready(function () {
     function isValidFormInput() {
         var year = $('#releaseYear').val();
         var title = $('#titleInput').val();
-        if (isNaN(releaseYear) || releaseYear.length != 4) {
+        console.log(title);
+        if (isNaN(year) || year.length != 4) {
+            console.log('bad year');
             return false;
         }
         if (title == "") {
+            console.log('bad title');
             return false;
+           
         }
         return true;
     }
