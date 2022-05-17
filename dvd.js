@@ -124,8 +124,10 @@ $(document).ready(function () {
         e.preventDefault();
         var searchCategory = $('#searchCategory').find('option:selected').attr('value');
         var searchTerm = $('#searchTerm').val();
+
         if (searchCategory == "" || searchTerm == "") {
-            console.log("bad search");
+            $("#errorMsg").text("Both Search Category and Search Term are required");
+            $("#errorMsgContainer").show(0).delay(3000).hide(0);
         }
         else {
             $.ajax({
@@ -197,7 +199,7 @@ $(document).ready(function () {
 
     $('#formSubmit').on('click', function () {
         if (!isValidFormInput()) {
-            console.log('bad input');
+            $("#errorMsgContainer").show().delay(3000).hide(0);
         } else {
             if ($('#id').attr('value') == '') {
                 createDvd();
@@ -210,15 +212,13 @@ $(document).ready(function () {
     function isValidFormInput() {
         var year = $('#releaseYear').val();
         var title = $('#titleInput').val();
-        console.log(title);
         if (isNaN(year) || year.length != 4) {
-            console.log('bad year');
+            $("#errorMsg").text("Please enter a 4-digit year");
             return false;
         }
         if (title == "") {
-            console.log('bad title');
+            $("#errorMsg").text("Please enter a title for the DVD");
             return false;
-           
         }
         return true;
     }

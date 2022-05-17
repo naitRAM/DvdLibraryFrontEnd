@@ -39,15 +39,20 @@
 		</div>
 	</div>
 
-	<div class="container" id="methodHeader">
-		<h1 class="display-4" id="headerTitle">Edit DVD: A Great Tale</h1>
+	<div class="container hidden" id="methodHeader">
+		<h1 class="display-5" id="headerTitle">Edit DVD: A Great Tale</h1>
 	</div>
 
 	<div class="container">
 		<hr id="inputSeparator">
 	</div>
 
-	<div class="container" id="tableContainer">
+	
+	<div class="container alert alert-danger hidden" role="alert" id="errorMsgContainer" >
+		<p class="text-center" id="errorMsg"></p>
+	</div>
+
+	<div class="container hidden" id="tableContainer">
 		<table class="table table-striped">
 			<thead>
 				<tr>
@@ -63,7 +68,7 @@
 		</table>
 	</div>
 
-	<div class="container" id="formContainer">
+	<div class="container hidden" id="formContainer">
 		<form>
 			<div class="hidden">
 				<input type="hidden" id="id">
@@ -115,7 +120,7 @@
 		</div>
 	</div>
 
-	<div class="container" id="detailsContainer">
+	<div class="container hidden" id="detailsContainer">
 		<div class="row margin-top">
 			<div class="col-sm-6">
 				<h1 class="h5">
